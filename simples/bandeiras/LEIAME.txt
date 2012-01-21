@@ -1,0 +1,2 @@
+Este diretório é usado pelos exemplos no diretório acima para escrever
+arquivos descartáveis.
