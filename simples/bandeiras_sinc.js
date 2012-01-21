@@ -26,16 +26,14 @@ function salvar(error, response, body) {
   }
   if (!error && response.statusCode == 200) {
     nome_arq = response.request.href.slice(BASE_URL.length);
-    fs.writeFile(DESTINO+nome_arq, body, function (err) {
-      if (err) throw err;
-      console.log('\t'+this.indice+' '+nome_arq+' salvo');
-      if ((this.indice+1)<QT_BAIXAR) {
-        var requisicao = {nomes: this.nomes, indice: this.indice+1};
-        var nome = this.nomes[requisicao.indice];
-        console.log(requisicao.indice+' '+nome);
-        request({uri:BASE_URL+nome, encoding:null}, salvar.bind(requisicao));
-      }
-    }.bind(this));
+    fs.writeFileSync(DESTINO+nome_arq, body);
+    console.log('\t'+this.indice+' '+nome_arq+' salvo');
+    if ((this.indice+1)<QT_BAIXAR) {
+      var requisicao = {nomes: this.nomes, indice: this.indice+1};
+      var nome = this.nomes[requisicao.indice];
+      console.log(requisicao.indice+' '+nome);
+      request({uri:BASE_URL+nome, encoding:null}, salvar.bind(requisicao));
+    }
   }
 }
 
