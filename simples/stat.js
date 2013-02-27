@@ -3,7 +3,9 @@
 var fs = require("fs");
 var util = require("util");
 
-fs.stat("stat.js", function(err, stats) {
+var mostrar = function mostrar(err, stats) {
 	if (err) { throw err };
-	console.log(util.inspect(stats));	
-});
+	console.log(util.inspect(stats));
+}
+fs.stat("stat.js", mostrar);
+console.log('ultima linha do script');

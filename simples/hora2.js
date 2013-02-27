@@ -9,6 +9,7 @@ function exibir() {
 }
 
 function exibir_indentado() {
+    for (var i=0; i < 1000000000; i++) {var x = i*10;};
     console.log('\t\t'+agora());
 }
 

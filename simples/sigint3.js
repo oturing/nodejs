@@ -7,8 +7,7 @@ function exibir() {
 setInterval(exibir, 100);
 console.log('Tecle ^C para encerrar');
 
-function constroi_terminar(vidas) {
-  return function terminar() {
+function terminar(vidas) {
     vidas--;
     console.log('\tSIGINT detectado. Falta: '+vidas+' vida(s)' );
     if (vidas==0) {
@@ -16,6 +15,5 @@ function constroi_terminar(vidas) {
       process.exit(1);      
     }
   }
-} 
-
-process.on('SIGINT', constroi_terminar(5));
+  
+process.on('SIG'+'INT', terminar);
