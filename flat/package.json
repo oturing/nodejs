@@ -1,0 +1,20 @@
+{
+  "description": "Um site de notícias",
+  "version": "0.0.0",
+  "private": true,
+  "dependencies": {
+    "union": "0.3.0",
+    "flatiron": "0.2.2"
+  },
+  "devDependencies": {
+    "api-easy": "0.3.2",
+    "vows": "0.6.1"
+  },
+  "scripts": {
+    "test": "vows --spec",
+    "start": "node app.js"
+  },
+  "name": "magnet",
+  "author": "luciano@ramalho.org",
+  "homepage": "http://turing.com.br"
+}
