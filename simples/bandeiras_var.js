@@ -25,9 +25,10 @@ function salvar(error, response, body) {
     console.log('Error: '+response.error);
   }
   if (!error && response.statusCode == 200) {
-    fs.writeFile(DESTINO+this.nome, body, function (err) {
+    nome_arq = response.request.href.slice(BASE_URL.length);
+    fs.writeFile(DESTINO+nome_arq, body, function (err) {
       if (err) throw err;
-      console.log('\t'+this.indice+' '+this.nome+' salvo');
+      console.log('\t'+this+' '+nome_arq+' salvo');
     }.bind(this));
   }
 }
@@ -35,8 +36,7 @@ function salvar(error, response, body) {
 for (i=0; i<QT_BAIXAR; i++) {
   nome = nomes[i];
   console.log(i+' '+nome);
-  var contexto = {indice: i, nome: nome};
-  request({uri:BASE_URL+nome, encoding:null}, salvar.bind(contexto));
+  request({uri:BASE_URL+nome, encoding:null}, salvar.bind(i));
 }
 
 process.on('exit', function () {
